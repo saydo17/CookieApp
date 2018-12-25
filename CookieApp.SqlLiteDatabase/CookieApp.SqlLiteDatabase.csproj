@@ -82,6 +82,7 @@
     <Compile Include="Mappings\TroopMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactory.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CookieApp.Core\CookieApp.Core.csproj">

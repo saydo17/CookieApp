@@ -43,7 +43,7 @@ namespace CookieApp.Core.Tests
                 new CookieQuantity(15, Cookie.Samoas),
             }, DateTime.UtcNow, 1);
 
-            _unitOfWork.Setup(f => f.Get<TroopCookieInventory>(It.IsAny<int>())).Returns(_troopInventory);
+            _unitOfWork.Setup(f => f.Get<TroopCookieInventory>(It.Is<int>(id => id == 1))).Returns(_troopInventory);
 
             var handler = new AddCookiesFromCupboardCommandHandler(_unitOfWork.Object);
             var result = handler.Handle(command);
@@ -60,9 +60,9 @@ namespace CookieApp.Core.Tests
             AddCookiesFromCupboard_Succeeds();
 
 
-            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.IsAny<int>())).Returns(_troopInventory);
+            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.Is<int>(id => id == 1))).Returns(_troopInventory);
+            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.Is<int>(id => id == 2))).Returns(_girlInventory);
 
-            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.IsAny<int>())).Returns(_girlInventory);
             var command = new TransferCookiesCommand(1, 2,
                 new[] {new CookieQuantity(5, Cookie.DosiSo)}, DateTime.UtcNow);
 
@@ -81,10 +81,11 @@ namespace CookieApp.Core.Tests
         public void TransferToTroopInventory_FromGirlInventory_Succeeds()
         {
             TransferFromTroopInventory_ToGirlInventory_Succeeds();
-            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.IsAny<int>())).Returns(_troopInventory);
 
-            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.IsAny<int>())).Returns(_girlInventory);
-            var command = new TransferCookiesCommand(1, 2,
+            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.Is<int>(id => id == 1))).Returns(_troopInventory);
+            _unitOfWork.Setup(f => f.Get<CookieInventory>(It.Is<int>(id => id == 2))).Returns(_girlInventory);
+
+            var command = new TransferCookiesCommand(2, 1,
                 new[] { new CookieQuantity(5, Cookie.DosiSo) }, DateTime.UtcNow);
 
             var handler = new TransferCookiesCommandHandler(_unitOfWork.Object);

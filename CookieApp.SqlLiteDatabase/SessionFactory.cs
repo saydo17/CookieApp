@@ -18,7 +18,7 @@ namespace CookieApp.SqlLiteDatabase
         private static ISessionFactory _factory;
         private static string _fileName;
 
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
             return _factory.OpenSession();
         }

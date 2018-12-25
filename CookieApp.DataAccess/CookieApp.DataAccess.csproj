@@ -50,6 +50,10 @@
       <Project>{12d00f64-a054-472a-a414-829b208637a0}</Project>
       <Name>CookieApp.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CookieApp.SqlLiteDatabase\CookieApp.SqlLiteDatabase.csproj">
+      <Project>{EE134218-F58A-4704-81DC-E8BF4DF0AC67}</Project>
+      <Name>CookieApp.SqlLiteDatabase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
