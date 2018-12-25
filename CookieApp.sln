@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieApp.Core", "CookieApp.Core\CookieApp.Core.csproj", "{12D00F64-A054-472A-A414-829B208637A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieApp.Core.Tests", "CookieApp.Core.Tests\CookieApp.Core.Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{CBF02D2F-A7DB-4E65-AAA9-7E9869B1D037}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationServices", "ApplicationServices", "{ED18CD47-E366-44A0-BE21-C236E81C7EC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieApp.ApplicationServices", "CookieApp.ApplicationServices\CookieApp.ApplicationServices.csproj", "{9FB18697-0B1A-4E60-A683-E2D74C0C6484}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{8A9C47C0-2DB8-4F37-AADE-0547F7C468C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieApp.DataAccess", "CookieApp.DataAccess\CookieApp.DataAccess.csproj", "{4012C7B0-BE63-45F7-BF2D-D408723EB63C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieApp.SqlLiteDatabase", "CookieApp.SqlLiteDatabase\CookieApp.SqlLiteDatabase.csproj", "{EE134218-F58A-4704-81DC-E8BF4DF0AC67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12D00F64-A054-472A-A414-829B208637A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D00F64-A054-472A-A414-829B208637A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D00F64-A054-472A-A414-829B208637A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D00F64-A054-472A-A414-829B208637A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB18697-0B1A-4E60-A683-E2D74C0C6484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB18697-0B1A-4E60-A683-E2D74C0C6484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB18697-0B1A-4E60-A683-E2D74C0C6484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB18697-0B1A-4E60-A683-E2D74C0C6484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4012C7B0-BE63-45F7-BF2D-D408723EB63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4012C7B0-BE63-45F7-BF2D-D408723EB63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4012C7B0-BE63-45F7-BF2D-D408723EB63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4012C7B0-BE63-45F7-BF2D-D408723EB63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE134218-F58A-4704-81DC-E8BF4DF0AC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE134218-F58A-4704-81DC-E8BF4DF0AC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE134218-F58A-4704-81DC-E8BF4DF0AC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE134218-F58A-4704-81DC-E8BF4DF0AC67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12D00F64-A054-472A-A414-829B208637A0} = {CBF02D2F-A7DB-4E65-AAA9-7E9869B1D037}
+		{8EDF4429-251A-416D-BB68-93F227191BCF} = {CBF02D2F-A7DB-4E65-AAA9-7E9869B1D037}
+		{9FB18697-0B1A-4E60-A683-E2D74C0C6484} = {ED18CD47-E366-44A0-BE21-C236E81C7EC0}
+		{4012C7B0-BE63-45F7-BF2D-D408723EB63C} = {8A9C47C0-2DB8-4F37-AADE-0547F7C468C5}
+		{EE134218-F58A-4704-81DC-E8BF4DF0AC67} = {8A9C47C0-2DB8-4F37-AADE-0547F7C468C5}
+	EndGlobalSection
+EndGlobal
