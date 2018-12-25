@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CookieApp.UI.Views"
              xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
+             xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
              mc:Ignorable="d" 
+             md:DialogServiceViews.IsRegistered="True"
              d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance Type={x:Type viewModels:TroopViewModel}}">
     <UserControl.Resources>
         <DataTemplate x:Key="GirlScoutListItemTemplate" DataType="{x:Type viewModels:GirlScoutViewModel}">
@@ -22,7 +24,16 @@
         </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
-        <TextBlock Text="{Binding Name}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Add Girl Scout" Command="{Binding AddGirlScoutCommand}"/>
+            </StackPanel>
+        </Grid>
         <ListBox ItemsSource="{Binding GirlScouts}"
                  ItemTemplate="{StaticResource GirlScoutListItemTemplate}"></ListBox>
     </StackPanel>

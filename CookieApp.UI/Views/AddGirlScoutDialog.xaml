@@ -1,0 +1,33 @@
+﻿<Window x:Class="CookieApp.UI.Views.AddGirlScoutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CookieApp.UI.Views"
+        xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
+        mc:Ignorable="d"
+        Title="AddGirlScoutDialog" Height="300" Width="300"
+        d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddGirlScoutDialogViewModel}}"
+        >
+    <StackPanel>
+        <TextBlock Text="First Name:"/>
+        <TextBox Text="{Binding FirstName}"/>
+        
+        <TextBlock Text="Last Name:"/>
+        <TextBox Text="{Binding LastName}"/>
+
+        <TextBlock Text="Parent First Name:"/>
+        <TextBox Text="{Binding ParentFirstName}"/>
+
+        <TextBlock Text="Parent Last Name:"/>
+        <TextBox Text="{Binding ParentLastName}"/>
+
+        <TextBlock Text="Phone Number:"/>
+        <TextBox Text="{Binding PhoneNumber}"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Save" Command="{Binding SaveCommand}"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CookieApp.Core;
 using CookieApp.Core.AppServices;
 using CookieApp.DataAccess.Repositories;
@@ -19,9 +20,9 @@ namespace CookieApp.ApplicationServices
             var repository = new TroopRepository(_unitOfWork);
 
             var troop = repository.GetTroop(query.Id);
-
             return new TroopDto()
             {
+                Id = troop.Id,
                 GirlScouts = troop.GirlScouts.Select(g => new GirlScoutDto()
                 {
                     FirstName = g.FirstName,
@@ -45,7 +46,6 @@ namespace CookieApp.ApplicationServices
                         Quantity = s.CookieQuantity.Quantity
                     }).ToList()
                 }
-
             };
         }
     }

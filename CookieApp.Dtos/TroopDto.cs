@@ -8,5 +8,6 @@ namespace CookieApp.Dtos
         public List<GirlScoutDto> GirlScouts { get; set; }
 
         public InventoryDto Inventory { get; set; }
+        public int Id { get; set; }
     }
 }

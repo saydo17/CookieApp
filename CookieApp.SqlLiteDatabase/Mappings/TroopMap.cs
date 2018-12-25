@@ -28,7 +28,7 @@ namespace CookieApp.SqlLiteDatabase.Mappings
             Map(x => x.PhoneNumber);
 
 
-            References(x => x.Inventory);
+            References(x => x.Inventory).Cascade.All();
         }
     }
 

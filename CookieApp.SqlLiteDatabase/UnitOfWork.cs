@@ -52,5 +52,11 @@ namespace CookieApp.SqlLiteDatabase
         {
             return _session.Query<T>();
         }
+
+        public void Dispose()
+        {
+            _session?.Dispose();
+            _transaction?.Dispose();
+        }
     }
 }

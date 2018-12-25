@@ -15,26 +15,44 @@ namespace CookieApp.UI.API
     {
         private readonly SessionFactory _sessionFactory;
 
-        //todo move to di container
         public CookieAppApi(SessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
         }
 
-        private IUnitOfWork unitOfWork => new UnitOfWork(_sessionFactory);
+        private IUnitOfWork UnitOfWork => new UnitOfWork(_sessionFactory);
 
         public void AddCookiesFromCupboard(IEnumerable<CookieQuantity> cookies, DateTime dateReceived,
             int troopInventoryId)
         {
-            var command = new AddCookiesFromCupboardCommand(cookies, dateReceived, troopInventoryId);
-            var handler = new AddCookiesFromCupboardCommandHandler(unitOfWork);
+            using (var uow = UnitOfWork)
+            {
+                var command = new AddCookiesFromCupboardCommand(cookies, dateReceived, troopInventoryId);
+                var handler = new AddCookiesFromCupboardCommandHandler(uow);
+            }
+            
         }
 
         public TroopDto GetTroopById(int id)
         {
-            var command = new GetTroopQuery(id);
-            var handler = new GetTroopQueryHandler(unitOfWork);
-            return handler.Handle(command);
+            using (var uow = UnitOfWork)
+            {
+                var command = new GetTroopQuery(id);
+                var handler = new GetTroopQueryHandler(uow);
+                return handler.Handle(command);
+            }
+            
+        }
+
+        public void AddGirlScoutToTroop(GirlScoutDto girlScout, int troopId)
+        {
+            using (var uow = UnitOfWork)
+            {
+                var command = new AddGirlScoutCommand(girlScout.FirstName, girlScout.LastName, girlScout.ParentFirstName,
+                    girlScout.ParentLastName, girlScout.PhoneNumber, troopId);
+                var handler = new AddGirlScoutCommandHandler(uow);
+                var result = handler.Handle(command);
+            }
         }
     }
 }

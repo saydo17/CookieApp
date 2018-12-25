@@ -33,7 +33,7 @@ namespace CookieApp.ApplicationServices.CommandHandlers
             };
 
             troop.AddGirlScout(girlScout);
-
+            
             _unitOfWork.Commit();
 
             return Result.Ok();
