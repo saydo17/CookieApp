@@ -14,9 +14,9 @@ namespace CookieApp.Core.Tests.DbTests
         [Test]
         public void CreateDatabase()
         {
-            SessionFactory.Init("c:\\Temp\\Test.db");
+            var sessionFactory = new SessionFactory(@"C:\temp\temp.db");
 
-            using (ISession session = SessionFactory.OpenSession())
+            using (ISession session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 var Troop = new Troop()

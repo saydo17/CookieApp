@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="CookieApp.UI.Views.TroopView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CookieApp.UI.Views"
+             xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance Type={x:Type viewModels:TroopViewModel}}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="GirlScoutListItemTemplate" DataType="{x:Type viewModels:GirlScoutViewModel}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding FullName}"/>
+                <TextBlock Grid.Column="1" Text="{Binding ParentFullName}"/>
+                <TextBlock Grid.Column="2" Text="{Binding PhoneNumber}"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock Text="{Binding Name}"/>
+        <ListBox ItemsSource="{Binding GirlScouts}"
+                 ItemTemplate="{StaticResource GirlScoutListItemTemplate}"></ListBox>
+    </StackPanel>
+</UserControl>

@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4012C7B0-BE63-45F7-BF2D-D408723EB63C}</ProjectGuid>
+    <ProjectGuid>{D37D3570-3721-4AC4-AD15-85668742BD9D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CookieApp.DataAccess</RootNamespace>
-    <AssemblyName>CookieApp.DataAccess</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>CookieApp.Dtos</RootNamespace>
+    <AssemblyName>CookieApp.Dtos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,19 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GirlScoutDto.cs" />
+    <Compile Include="CookieDto.cs" />
+    <Compile Include="CookieSlotDto.cs" />
+    <Compile Include="InventoryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\InventoryRepository.cs" />
-    <Compile Include="Repositories\TroopRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CookieApp.Core\CookieApp.Core.csproj">
-      <Project>{12d00f64-a054-472a-a414-829b208637a0}</Project>
-      <Name>CookieApp.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CookieApp.SqlLiteDatabase\CookieApp.SqlLiteDatabase.csproj">
-      <Project>{EE134218-F58A-4704-81DC-E8BF4DF0AC67}</Project>
-      <Name>CookieApp.SqlLiteDatabase</Name>
-    </ProjectReference>
+    <Compile Include="TroopDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

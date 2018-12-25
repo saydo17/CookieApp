@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CookieApp.UI
+namespace CookieApp.UI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TroopView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TroopView : UserControl
     {
-        public MainWindow()
+        public TroopView()
         {
             InitializeComponent();
         }

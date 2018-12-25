@@ -15,23 +15,22 @@ namespace CookieApp.SqlLiteDatabase
 {
     public class SessionFactory
     {
-        private static ISessionFactory _factory;
-        private static string _fileName;
+        public SessionFactory(string fileName)
+        {
+            _factory = BuildSessionFactory(fileName);
+        }
+
+        private readonly ISessionFactory _factory;
 
         public ISession OpenSession()
         {
             return _factory.OpenSession();
         }
 
-        public static void Init(string fileName)
-        {
-            _factory = BuildSessionFactory(fileName);
-        }
 
         private static ISessionFactory BuildSessionFactory(string fileName)
         {
-            _fileName = fileName;
-            FluentConfiguration configuration = Fluently.Configure()
+            var configuration = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard.UsingFile(fileName))
                 .Mappings(m => m.FluentMappings
                     .AddFromAssemblyOf<TroopMap>()
@@ -48,28 +47,12 @@ namespace CookieApp.SqlLiteDatabase
             return configuration.BuildSessionFactory();
         }
 
-        private static void BuildSchema(Configuration obj)
-        {
-            if (File.Exists(_fileName)) File.Delete(_fileName);
-
-            var se = new SchemaExport(obj);
-            se.Create(true, true);
-        }
-
-        public class TableNamingConvention : IClassConvention
+        // ReSharper disable once ClassNeverInstantiated.Local
+        private class TableNamingConvention : IClassConvention
         {
             public void Apply(IClassInstance instance)
             {
                 instance.Table(instance.EntityType.Name);
-            }
-        }
-
-        private class HiLoConvention : IIdConvention
-        {
-            public void Apply(IIdentityInstance instance)
-            {
-                instance.Column(instance.EntityType.Name + "ID");
-                instance.GeneratedBy.Native();
             }
         }
     }

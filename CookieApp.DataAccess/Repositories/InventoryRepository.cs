@@ -12,7 +12,7 @@ namespace CookieApp.DataAccess.Repositories
             _unitOfWork = unitOfWork;
         }
 
-        public TInventory GetById<TInventory>(int id) where TInventory : ICookieInventory
+        public TInventory GetById<TInventory>(int id) where TInventory : CookieInventory
         {
             return _unitOfWork.Get<TInventory>(id);
         }
