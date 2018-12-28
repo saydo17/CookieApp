@@ -3,12 +3,19 @@ using System.Collections.Generic;
 
 namespace CookieApp.Core.Inventory
 {
-    public class CookieTransferInTransaction : CookieTransferTransaction
+    public class CookieTransferInTransaction : Transaction
     {
-        public int FromInventoryId { get; }
+        public virtual int FromInventoryId { get; }
+        public virtual IEnumerable<CookieQuantity> Cookies { get; }
 
-        public CookieTransferInTransaction(IEnumerable<CookieQuantity> cookies, DateTime dateReceived, int fromInventoryId) : base(cookies, dateReceived)
+        public CookieTransferInTransaction()
         {
+            
+        }
+
+        public CookieTransferInTransaction(IEnumerable<CookieQuantity> cookies, DateTime dateReceived, int fromInventoryId) : base(dateReceived)
+        {
+            Cookies = cookies;
             FromInventoryId = fromInventoryId;
         }
     }

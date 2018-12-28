@@ -71,6 +71,10 @@
       <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.5.2.1\lib\net461\NHibernate.dll</HintPath>
       <Private>True</Private>
@@ -97,6 +101,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\Blobbed.cs" />
+    <Compile Include="Mappings\CookieInventoryMap.cs" />
+    <Compile Include="Mappings\CookieStackMap.cs" />
+    <Compile Include="Mappings\GirlScoutCookieInventoryMap.cs" />
+    <Compile Include="Mappings\GirlScoutMap.cs" />
+    <Compile Include="Mappings\TransactionMap.cs" />
+    <Compile Include="Mappings\TroopCookieInventoryMap.cs" />
     <Compile Include="Mappings\TroopMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionFactory.cs" />

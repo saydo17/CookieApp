@@ -94,10 +94,9 @@
     <Compile Include="Inventory\CookieStack.cs" />
     <Compile Include="Inventory\GirlScoutCookieInventory.cs" />
     <Compile Include="Inventory\ICookieInventory.cs" />
-    <Compile Include="Inventory\Transactions\InitialOrderTransaction.cs" />
+    <Compile Include="Inventory\Transactions\OrderTransaction.cs" />
     <Compile Include="Inventory\Transactions\CookieTransferInTransaction.cs" />
     <Compile Include="Inventory\Transactions\CookieTransferOutTransaction.cs" />
-    <Compile Include="Inventory\Transactions\CookieTransferTransaction.cs" />
     <Compile Include="Inventory\CookieVariety.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Inventory\Transactions\Transaction.cs" />

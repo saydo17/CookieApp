@@ -21,7 +21,7 @@ namespace CookieApp.Core.Inventory
             }
 
 
-            Transactions.Add(new InitialOrderTransaction(quantities, dateReceived));
+            Transactions.Add(new OrderTransaction(quantities, dateReceived));
         }
     }
 }
