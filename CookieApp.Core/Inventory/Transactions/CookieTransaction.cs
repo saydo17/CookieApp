@@ -2,10 +2,10 @@
 
 namespace CookieApp.Core.Inventory
 {
-    public abstract class Transaction : Entity
+    public class CookieTransaction : Entity
     {
-        protected Transaction() { }
-        public Transaction( DateTime dateReceived) : this()
+        protected CookieTransaction() { }
+        public CookieTransaction( DateTime dateReceived) : this()
         {
             DateEntered = DateTime.UtcNow;
             DateReceived = dateReceived;
@@ -13,5 +13,6 @@ namespace CookieApp.Core.Inventory
 
         public virtual DateTime DateEntered { get; }
         public virtual DateTime DateReceived { get; }
+
     }
 }

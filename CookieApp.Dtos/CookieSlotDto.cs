@@ -3,7 +3,10 @@
     public class CookieSlotDto
     {
         public int Position { get; set; }
-        public CookieDto Cookie { get; set; }
-        public int Quantity { get; set; }
+
+        public CookieQuantityDto CookieQuantity { get; set; }
+
+        public CookieDto Cookie => CookieQuantity.Cookie;
+        public int Quantity => CookieQuantity.Quantity;
     }
 }

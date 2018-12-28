@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CookieApp.Core.Inventory
 {
-    public class CookieTransferInTransaction : Transaction
+    public class CookieTransferInTransaction : CookieTransaction
     {
         public virtual int FromInventoryId { get; }
         public virtual IEnumerable<CookieQuantity> Cookies { get; }

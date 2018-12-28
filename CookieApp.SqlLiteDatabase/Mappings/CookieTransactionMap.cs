@@ -5,9 +5,9 @@ using FluentNHibernate.Mapping;
 
 namespace CookieApp.SqlLiteDatabase.Mappings
 {
-    public class TransactionMap : ClassMap<Transaction>
+    public class CookieTransactionMap : ClassMap<CookieTransaction>
     {
-        public TransactionMap()
+        public CookieTransactionMap()
         {
             Id(x => x.Id);
             Map(x => x.DateEntered);

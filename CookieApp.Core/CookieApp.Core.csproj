@@ -99,7 +99,7 @@
     <Compile Include="Inventory\Transactions\CookieTransferOutTransaction.cs" />
     <Compile Include="Inventory\CookieVariety.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="Inventory\Transactions\Transaction.cs" />
+    <Compile Include="Inventory\Transactions\CookieTransaction.cs" />
     <Compile Include="Inventory\Transactions\UpdateCookiesTransaction.cs" />
     <Compile Include="Inventory\TroopCookieInventory.cs" />
     <Compile Include="IUnitOfWork.cs" />

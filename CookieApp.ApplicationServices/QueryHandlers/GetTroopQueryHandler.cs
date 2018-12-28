@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using CookieApp.Core;
 using CookieApp.Core.AppServices;
+using CookieApp.Core.Inventory;
 using CookieApp.DataAccess.Repositories;
 using CookieApp.Dtos;
+using UpdateCookiesTransaction = CookieApp.Core.Inventory.UpdateCookiesTransaction;
 
 namespace CookieApp.ApplicationServices
 {
@@ -15,6 +19,7 @@ namespace CookieApp.ApplicationServices
         {
             _unitOfWork = unitOfWork;
         }
+
         public TroopDto Handle(GetTroopQuery query)
         {
             var repository = new TroopRepository(_unitOfWork);
@@ -38,15 +43,119 @@ namespace CookieApp.ApplicationServices
                     CookieSlots = troop.Inventory.Stacks.Select(s => new CookieSlotDto()
                     {
                         Position = s.Position,
-                        Cookie = new CookieDto()
+                        CookieQuantity = new CookieQuantityDto()
                         {
-                            CookieVariety = s.CookieQuantity.Cookie.Variety.ToString(),
-                            Price = s.CookieQuantity.Cookie.Price,
-                        },
-                        Quantity = s.CookieQuantity.Quantity
-                    }).ToList()
+                            Cookie = new CookieDto()
+                            {
+                                CookieVariety = s.CookieQuantity.Cookie.Variety.ToString(),
+                                Price = s.CookieQuantity.Cookie.Price
+                            }
+                        }
+                    }).ToList(),
+                    Transactions = troop.Inventory.Transactions
+                        .Select(CookieTransactionDtoFactory.CreateCookieTransaction).ToList()
                 }
             };
+        }
+    }
+
+    public static class CookieTransactionDtoFactory
+    {
+        public static CookieTransactionDto CreateCookieTransaction(CookieTransaction cookieTransaction)
+        {
+            CookieTransactionDto ret = null;
+            var typeSwitch = new TypeSwitch()
+                .Case((OrderTransaction x) => ret = new OrderTransactionDto()
+                {
+                    Cookies = x.Cookies.Select(c =>
+                        new CookieQuantityDto()
+                        {
+                            Cookie = new CookieDto()
+                            {
+                                CookieVariety = c.Cookie.Variety.ToString(),
+                                Price = c.Cookie.Price
+                            },
+                            Quantity = c.Quantity,
+                        }
+                    ).ToList(),
+                    DateEntered = x.DateEntered,
+                    DateReceived = x.DateReceived
+                })
+                .Case((CookieTransferInTransaction x) => ret = new CookieTransferInTransactionDto()
+                {
+                    DateEntered = x.DateEntered,
+                    DateReceived = x.DateReceived,
+                    FromInventoryId = x.FromInventoryId,
+                    Cookies = x.Cookies.Select(c =>
+                        new CookieQuantityDto()
+                        {
+                            Cookie = new CookieDto()
+                            {
+                                CookieVariety = c.Cookie.Variety.ToString(),
+                                Price = c.Cookie.Price
+                            },
+                            Quantity = c.Quantity,
+                        }
+                    ).ToList()
+                })
+                .Case((CookieTransferOutTransaction x) => ret = new CookieTransferOutTransactionDto()
+                {
+                    DateEntered = x.DateEntered,
+                    DateReceived = x.DateReceived,
+                    ToInventoryId = x.ToInventoryId,
+                    Cookies = x.Cookies.Select(c =>
+                        new CookieQuantityDto()
+                        {
+                            Cookie = new CookieDto()
+                            {
+                                CookieVariety = c.Cookie.Variety.ToString(),
+                                Price = c.Cookie.Price
+                            },
+                            Quantity = c.Quantity,
+                        }
+                    ).ToList()
+                })
+                .Case((PaymentTransaction x) => ret = new PaymentTransactionDto()
+                {
+                    DateEntered = x.DateEntered,
+                    DateReceived = x.DateReceived,
+                    Amount = x.Amount,
+                })
+                .Case((UpdateCookiesTransaction x) => ret = new UpdateCookiesTransactionDto()
+                {
+                    DateEntered = x.DateEntered,
+                    DateReceived = x.DateReceived,
+                    Cookies = x.Cookies.Select(c =>
+                        new CookieQuantityDto()
+                        {
+                            Cookie = new CookieDto()
+                            {
+                                CookieVariety = c.Cookie.Variety.ToString(),
+                                Price = c.Cookie.Price
+                            },
+                            Quantity = c.Quantity,
+                        }
+                    ).ToList()
+                });
+
+            typeSwitch.Switch(cookieTransaction);
+            return ret;
+        }
+    }
+
+    public class TypeSwitch
+    {
+        private readonly Dictionary<Type, Action<object>> _matches = new Dictionary<Type, Action<object>>();
+
+        public TypeSwitch Case<T>(Action<T> action)
+        {
+            _matches.Add(typeof(T), (x) => action((T) x));
+            return this;
+        }
+
+        public void Switch(object x)
+        {
+            _matches[x.GetType()](x);
         }
     }
 }

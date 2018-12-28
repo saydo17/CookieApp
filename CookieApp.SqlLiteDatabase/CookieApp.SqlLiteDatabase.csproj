@@ -106,7 +106,7 @@
     <Compile Include="Mappings\CookieStackMap.cs" />
     <Compile Include="Mappings\GirlScoutCookieInventoryMap.cs" />
     <Compile Include="Mappings\GirlScoutMap.cs" />
-    <Compile Include="Mappings\TransactionMap.cs" />
+    <Compile Include="Mappings\CookieTransactionMap.cs" />
     <Compile Include="Mappings\TroopCookieInventoryMap.cs" />
     <Compile Include="Mappings\TroopMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

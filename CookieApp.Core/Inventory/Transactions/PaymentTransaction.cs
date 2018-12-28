@@ -2,7 +2,7 @@
 
 namespace CookieApp.Core.Inventory
 {
-    public class PaymentTransaction : Transaction
+    public class PaymentTransaction : CookieTransaction
     {
         protected PaymentTransaction()
         {

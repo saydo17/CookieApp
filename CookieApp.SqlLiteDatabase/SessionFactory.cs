@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
-using CookieApp.SqlLiteDatabase.Mappings;
+﻿using CookieApp.SqlLiteDatabase.Mappings;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
@@ -42,9 +40,14 @@ namespace CookieApp.SqlLiteDatabase
                     .Conventions.Add<TableNamingConvention>()
 
                 )
-                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
+                .ExposeConfiguration(Config);
 
             return configuration.BuildSessionFactory();
+        }
+
+        private static void Config(Configuration cfg)
+        {
+            new SchemaUpdate(cfg).Execute(true, true);
         }
 
         // ReSharper disable once ClassNeverInstantiated.Local

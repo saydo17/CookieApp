@@ -7,7 +7,7 @@ namespace CookieApp.Core.Inventory
     {
         decimal Balance { get; set; }
         IList<CookieStack> Stacks { get; set; }
-        IList<Transaction> Transactions { get; set; }
+        IList<CookieTransaction> Transactions { get; set; }
         decimal Variance { get; }
 
         void TransferCookiesIn(IEnumerable<CookieQuantity> cookieQuantities, DateTime dateReceived, int fromInventoryId);

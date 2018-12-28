@@ -8,7 +8,7 @@ namespace CookieApp.Core.Inventory
     {
         public CookieInventory()
         {
-            Transactions = new List<Transaction>();
+            Transactions = new List<CookieTransaction>();
             Stacks = new List<CookieStack>()
             {
                 new CookieStack(0, Cookie.DosiSo),
@@ -24,10 +24,11 @@ namespace CookieApp.Core.Inventory
 
         public virtual decimal Balance { get; set; }
         public virtual IList<CookieStack> Stacks { get; set; }
-        public virtual IList<Transaction> Transactions { get; set; }
+        public virtual IList<CookieTransaction> Transactions { get; set; }
         public virtual decimal Variance { get; }
 
-        public virtual void TransferCookiesIn(IEnumerable<CookieQuantity> cookieQuantities, DateTime dateReceived, int fromInventoryId)
+        public virtual void TransferCookiesIn(IEnumerable<CookieQuantity> cookieQuantities, DateTime dateReceived,
+            int fromInventoryId)
         {
             var quantities = cookieQuantities.ToList();
             Balance += quantities.Sum(c => c.TotalAmount);
@@ -35,7 +36,7 @@ namespace CookieApp.Core.Inventory
             foreach (var cookie in quantities)
             {
                 var stack = Stacks.FirstOrDefault(s => s.CookieQuantity.Cookie == cookie.Cookie);
-                if(stack == null)
+                if (stack == null)
                     throw new InvalidOperationException($"Cookie type {cookie.Cookie} not found.");
                 stack.CookieQuantity += cookie;
             }
@@ -44,7 +45,8 @@ namespace CookieApp.Core.Inventory
             Transactions.Add(new CookieTransferInTransaction(quantities, dateReceived, fromInventoryId));
         }
 
-        public virtual void TransferCookiesOut(IEnumerable<CookieQuantity> cookies, DateTime dateReceived, int toInventoryId)
+        public virtual void TransferCookiesOut(IEnumerable<CookieQuantity> cookies, DateTime dateReceived,
+            int toInventoryId)
         {
 
             var quantities = cookies.ToList();
