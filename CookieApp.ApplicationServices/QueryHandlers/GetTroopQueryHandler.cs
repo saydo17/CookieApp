@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using CookieApp.Core;
 using CookieApp.Core.AppServices;
 using CookieApp.Core.Inventory;
 using CookieApp.DataAccess.Repositories;
 using CookieApp.Dtos;
-using UpdateCookiesTransaction = CookieApp.Core.Inventory.UpdateCookiesTransaction;
 
 namespace CookieApp.ApplicationServices
 {
@@ -25,37 +23,46 @@ namespace CookieApp.ApplicationServices
             var repository = new TroopRepository(_unitOfWork);
 
             var troop = repository.GetTroop(query.Id);
-            return new TroopDto()
+            return new TroopDto
             {
                 Id = troop.Id,
-                GirlScouts = troop.GirlScouts.Select(g => new GirlScoutDto()
+                GirlScouts = troop.GirlScouts.Select(g => new GirlScoutDto
                 {
                     FirstName = g.FirstName,
                     LastName = g.LastName,
                     ParentFirstName = g.ParentFirstName,
                     ParentLastName = g.ParentLastName,
-                    PhoneNumber = g.PhoneNumber
+                    PhoneNumber = g.PhoneNumber,
+                    Inventory = CreateInventoryDto(g.Inventory)
                 }).ToList(),
                 Name = troop.Name,
-                Inventory = new InventoryDto()
-                {
-                    Balance = troop.Inventory.Balance,
-                    CookieSlots = troop.Inventory.Stacks.Select(s => new CookieSlotDto()
-                    {
-                        Position = s.Position,
-                        CookieQuantity = new CookieQuantityDto()
-                        {
-                            Cookie = new CookieDto()
-                            {
-                                CookieVariety = s.CookieQuantity.Cookie.Variety.ToString(),
-                                Price = s.CookieQuantity.Cookie.Price
-                            }
-                        }
-                    }).ToList(),
-                    Transactions = troop.Inventory.Transactions
-                        .Select(CookieTransactionDtoFactory.CreateCookieTransaction).ToList()
-                }
+                Inventory = CreateInventoryDto(troop.Inventory)
             };
+        }
+
+        private static InventoryDto CreateInventoryDto(CookieInventory inventory)
+        {
+            var dto = new InventoryDto
+            {
+                Id = inventory.Id,
+                Balance = inventory.Balance,
+                CookieSlots = inventory.Stacks.Select(s => new CookieSlotDto
+                {
+                    Position = s.Position,
+                    CookieQuantity = new CookieQuantityDto
+                    {
+                        Quantity = s.CookieQuantity.Quantity,
+                        Cookie = new CookieDto
+                        {
+                            CookieVariety = s.CookieQuantity.Cookie.Variety.ToString(),
+                            Price = s.CookieQuantity.Cookie.Price
+                        }
+                    }
+                }).ToList(),
+                Transactions = inventory.Transactions
+                    .Select(CookieTransactionDtoFactory.CreateCookieTransaction).ToList()
+            };
+            return dto;
         }
     }
 

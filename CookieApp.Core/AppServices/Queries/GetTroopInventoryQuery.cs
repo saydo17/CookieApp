@@ -2,9 +2,9 @@
 
 namespace CookieApp.Core.AppServices
 {
-    public class GetTroopQuery : IQuery<TroopDto>, IQuery<InventoryDto>
+    public class GetTroopInventoryQuery : IQuery<InventoryDto>
     {
-        public GetTroopQuery(int id)
+        public GetTroopInventoryQuery(int id)
         {
             Id = id;
         }

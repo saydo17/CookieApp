@@ -10,6 +10,7 @@ namespace CookieApp.Dtos
         public decimal Balance { get; set; }
 
         public List<CookieTransactionDto> Transactions { get; set; }
+        public int Id { get; set; }
     }
 
     public class CookieTransactionDto

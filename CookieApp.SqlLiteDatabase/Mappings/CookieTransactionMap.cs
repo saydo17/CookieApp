@@ -13,6 +13,7 @@ namespace CookieApp.SqlLiteDatabase.Mappings
             Map(x => x.DateEntered);
             Map(x => x.DateReceived);
             DiscriminateSubClassesOnColumn("type");
+
         }
     }
 
@@ -21,8 +22,10 @@ namespace CookieApp.SqlLiteDatabase.Mappings
         public CookieTransferInTransactionMap()
         {
             DiscriminatorValue(nameof(CookieTransferInTransaction));
-            Map(x => x.Cookies).CustomType<Blobbed<List<CookieQuantity>>>();
-            Map(x => x.FromInventoryId);
+            Map(x => x.Cookies).CustomType<Blobbed<IEnumerable<CookieQuantity>>>()
+                .Nullable();
+            Map(x => x.FromInventoryId)
+                .Nullable();
         }
     }
 
@@ -31,8 +34,10 @@ namespace CookieApp.SqlLiteDatabase.Mappings
         public CookieTransferOutTransactionMap()
         {
             DiscriminatorValue(nameof(CookieTransferOutTransaction));
-            Map(x => x.Cookies).CustomType<Blobbed<List<CookieQuantity>>>();
-            Map(x => x.ToInventoryId);
+            Map(x => x.Cookies).CustomType<Blobbed<IEnumerable<CookieQuantity>>>()
+                .Nullable();
+            Map(x => x.ToInventoryId)
+                .Nullable();
         }
     }
 
@@ -41,7 +46,8 @@ namespace CookieApp.SqlLiteDatabase.Mappings
         public OrderTransactionMap()
         {
             DiscriminatorValue(nameof(OrderTransaction));
-            Map(x => x.Cookies).CustomType<Blobbed<List<CookieQuantity>>>();
+            Map(x => x.Cookies).CustomType<Blobbed<IEnumerable<CookieQuantity>>>()
+                .Nullable();
         }
     }
 
@@ -50,7 +56,8 @@ namespace CookieApp.SqlLiteDatabase.Mappings
         public PaymentTransactionMap()
         {
             DiscriminatorValue(nameof(PaymentTransaction));
-            Map(x => x.Amount);
+            Map(x => x.Amount)
+                .Nullable();
         }
     }
 
@@ -59,7 +66,8 @@ namespace CookieApp.SqlLiteDatabase.Mappings
         public UpdateCookieTransactionMap()
         {
             DiscriminatorValue(nameof(UpdateCookiesTransaction));
-            Map(x => x.Cookies).CustomType<Blobbed<CookieQuantity>>();
+            Map(x => x.Cookies).CustomType<Blobbed<IEnumerable<CookieQuantity>>>()
+                .Nullable();
         }
     }
 

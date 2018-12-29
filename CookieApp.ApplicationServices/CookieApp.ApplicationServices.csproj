@@ -82,6 +82,7 @@
     <Compile Include="CommandHandlers\TransferCookiesCommandHandler.cs" />
     <Compile Include="CommandHandlers\UpdateCookiesCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlers\GetTroopInventoryQueryHandler.cs" />
     <Compile Include="QueryHandlers\GetTroopQueryHandler.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CookieApp.Core.Inventory
 {
@@ -15,10 +16,14 @@ namespace CookieApp.Core.Inventory
             Cookie = cookie;
         }
 
-        public virtual int Quantity { get; }
-        public virtual Cookie Cookie { get; }
+        //need json attributes and private setters for transaction serialization
+        [JsonProperty]
+        public virtual int Quantity { get; private set; }
+        [JsonProperty]
+        public virtual Cookie Cookie { get; private set; }
 
-        public decimal TotalAmount => Quantity * Cookie.Price;
+        [JsonIgnore]
+        public decimal TotalAmount => Cookie == null ? 0m : Quantity * Cookie.Price;
 
         public static CookieQuantity operator+ (CookieQuantity a, CookieQuantity b)
         {

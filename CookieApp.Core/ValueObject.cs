@@ -14,7 +14,8 @@ namespace CookieApp.Core
                 return false;
 
             if (GetType() != obj.GetType())
-                throw new ArgumentException($"Invalid comparison of Value Objects of different types: {GetType()} and {obj.GetType()}");
+                return base.Equals(obj);
+                //throw new ArgumentException($"Invalid comparison of Value Objects of different types: {GetType()} and {obj.GetType()}");
 
             var valueObject = (ValueObject)obj;
 

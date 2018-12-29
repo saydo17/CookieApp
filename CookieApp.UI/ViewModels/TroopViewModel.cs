@@ -14,6 +14,17 @@ namespace CookieApp.UI.ViewModels
         private ObservableCollection<GirlScoutViewModel> _girlScouts;
         private string _name;
 
+        public TroopInventoryViewModel Inventory
+        {
+            get { return _inventory; }
+            set
+            {
+                if (Equals(value, _inventory)) return;
+                _inventory = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string Name
         {
             get { return _name; }
@@ -43,6 +54,7 @@ namespace CookieApp.UI.ViewModels
         private readonly CookieAppApi _api;
         private readonly DialogService _dialogService;
         private int _troopId;
+        private TroopInventoryViewModel _inventory;
 
         private void AddGirlScout()
         {
@@ -51,7 +63,7 @@ namespace CookieApp.UI.ViewModels
 
             if (result.HasValue && result.Value)
             {
-                _api.AddGirlScoutToTroop(new GirlScoutDto()
+                _api.AddGirlScoutToTroop(new NewGirlScoutDto()
                 {
                     FirstName = vm.FirstName,
                     LastName = vm.LastName,
@@ -85,7 +97,10 @@ namespace CookieApp.UI.ViewModels
                 ParentFirstName = g.ParentFirstName,
                 ParentLastName = g.ParentLastName,
                 PhoneNumber = g.PhoneNumber,
+                Inventory = new GirlScoutCookieInventoryViewModel(g.Inventory, _dialogService, _api)
             }));
+            //TODO Factory for DI
+            Inventory = new TroopInventoryViewModel(troop.Inventory, _dialogService, _api);
         }
     }
 }

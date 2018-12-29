@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:CookieApp.UI.Views"
         xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
         mc:Ignorable="d"
-        Title="ShellViewModel" Height="300" Width="300" d:DataContext="{d:DesignInstance Type={x:Type viewModels:ShellViewModel}}">
+        Title="ShellViewModel" Height="500" Width="800"
+        d:DataContext="{d:DesignInstance Type={x:Type viewModels:ShellViewModel}}">
     <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

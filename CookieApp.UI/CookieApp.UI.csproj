@@ -109,14 +109,21 @@
     </ApplicationDefinition>
     <Compile Include="API\CookieAppApi.cs" />
     <Compile Include="Properties\Annotations1.cs" />
+    <Compile Include="ViewModels\AddCookiesFromCupboardDialogViewModel.cs" />
     <Compile Include="ViewModels\AddGirlScoutDialogViewModel.cs" />
+    <Compile Include="ViewModels\CookieVariety.cs" />
+    <Compile Include="ViewModels\GirlScoutCookieInventoryViewModel.cs" />
     <Compile Include="ViewModels\GirlScoutViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TroopInventoryViewModel.cs" />
     <Compile Include="ViewModels\TroopViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\AddCookiesFromCupboardDialog.xaml.cs">
+      <DependentUpon>AddCookiesFromCupboardDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddGirlScoutDialog.xaml.cs">
       <DependentUpon>AddGirlScoutDialog.xaml</DependentUpon>
@@ -124,14 +131,25 @@
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TroopInventoryView.xaml.cs">
+      <DependentUpon>TroopInventoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TroopView.xaml.cs">
       <DependentUpon>TroopView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddCookiesFromCupboardDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddGirlScoutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TroopInventoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +184,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Views\App.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

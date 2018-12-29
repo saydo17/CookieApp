@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using NHibernate.Engine;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
@@ -41,7 +42,10 @@ namespace CookieApp.SqlLiteDatabase.Mappings
 
             if (val != null && !string.IsNullOrWhiteSpace(val))
             {
-                return JsonConvert.DeserializeObject<T>(val);
+                ITraceWriter traceWriter = new MemoryTraceWriter();
+                var obj = JsonConvert.DeserializeObject<T>(val, new JsonSerializerSettings() {TraceWriter = traceWriter});
+                Console.WriteLine(traceWriter);
+                return obj;
             }
 
             return null;
@@ -114,7 +118,7 @@ namespace CookieApp.SqlLiteDatabase.Mappings
 
         public bool IsMutable
         {
-            get { return true; }
+            get { return false; }
         }
     }
 }

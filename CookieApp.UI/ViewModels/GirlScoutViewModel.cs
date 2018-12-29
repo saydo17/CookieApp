@@ -7,6 +7,7 @@
         private string _parentFirstName;
         private string _parentLastName;
         private string _phoneNumber;
+        private GirlScoutCookieInventoryViewModel _inventory;
 
         public string FirstName
         {
@@ -67,6 +68,17 @@
             {
                 if (value == _phoneNumber) return;
                 _phoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public GirlScoutCookieInventoryViewModel Inventory
+        {
+            get { return _inventory; }
+            set
+            {
+                if (Equals(value, _inventory)) return;
+                _inventory = value;
                 OnPropertyChanged();
             }
         }

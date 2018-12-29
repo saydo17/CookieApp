@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CookieApp.Core.Inventory;
+using CookieApp.Dtos;
 
 namespace CookieApp.Core.AppServices
 {
