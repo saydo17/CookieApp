@@ -5,7 +5,7 @@ using MvvmDialogs;
 
 namespace CookieApp.UI.ViewModels
 {
-    public class TransferCookiesFromGirlScoutDialogViewModel : ViewModelBase, IModalDialogViewModel
+    public class TransferCookiesFromGirlScoutDialogViewModel : DialogViewModelBase
     {
         private readonly GirlScoutInventoryViewModel _girlScoutInventory;
         private int _smors;
@@ -17,9 +17,6 @@ namespace CookieApp.UI.ViewModels
         private int _savannah;
         private int _toffeeTastic;
         private DateTime _dateReceived;
-        private bool? _dialogResult;
-        private ICommand _saveCommand;
-        private ICommand _cancelCommand;
 
         public TransferCookiesFromGirlScoutDialogViewModel(GirlScoutInventoryViewModel girlScoutInventory)
         {
@@ -27,17 +24,8 @@ namespace CookieApp.UI.ViewModels
             _dateReceived = DateTime.Today;
         }
 
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand(Cancel));
-
-        private void Cancel()
-        {
-            DialogResult = false;
-        }
-
-        public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new RelayCommand(Save, CanSave));
-
         //TODO Move to validation
-        private bool CanSave()
+        protected override bool CanSave()
         {
             foreach (var cookieSlot in _girlScoutInventory.CookieSlots)
             {
@@ -69,22 +57,6 @@ namespace CookieApp.UI.ViewModels
 
             }
             return true;
-        }
-
-        private void Save()
-        {
-            DialogResult = true;
-        }
-
-        public bool? DialogResult
-        {
-            get { return _dialogResult; }
-            private set
-            {
-                if (value == _dialogResult) return;
-                _dialogResult = value;
-                OnPropertyChanged();
-            }
         }
 
         public int Smors

@@ -145,5 +145,22 @@ namespace CookieApp.UI.API
                 var result = handler.Handle(command);
             }
         }
+
+        public void MakePayment(MakePaymentDto makePaymentDto)
+        {
+            using (var uow = UnitOfWork)
+            {
+                var command = new MakePaymentCommand(makePaymentDto.DateReceived, makePaymentDto.Amount, makePaymentDto.InventoryId);
+                var handler = new MakePaymentCommandHandler(uow);
+                var result = handler.Handle(command);
+            }
+        }
+    }
+
+    public class MakePaymentDto
+    {
+        public DateTime DateReceived { get; set; }
+        public decimal Amount { get; set; }
+        public int InventoryId { get; set; }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Windows.Input;
-using GalaSoft.MvvmLight.CommandWpf;
-using MvvmDialogs;
 
 namespace CookieApp.UI.ViewModels
 {
-    public class AddCookiesFromCupboardDialogViewModel : ViewModelBase, IModalDialogViewModel
+    public class AddCookiesFromCupboardDialogViewModel : DialogViewModelBase
     {
         private int _smors;
         private int _thinMints;
@@ -15,9 +12,7 @@ namespace CookieApp.UI.ViewModels
         private int _doSiSos;
         private int _savannah;
         private int _toffeeTastic;
-        private bool? _dialogResult;
-        private ICommand _saveCommand;
-        private ICommand _cancelCommand;
+
         private DateTime _dateReceived;
 
         public AddCookiesFromCupboardDialogViewModel()
@@ -113,26 +108,6 @@ namespace CookieApp.UI.ViewModels
             }
         }
 
-        public bool? DialogResult
-        {
-            get { return _dialogResult; }
-            private set
-            {
-                if (value == _dialogResult) return;
-                _dialogResult = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new RelayCommand(OnSave));
-
-        private void OnSave()
-        {
-            DialogResult = true;
-        }
-
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand(OnCancel));
-
         public DateTime DateReceived
         {
             get { return _dateReceived; }
@@ -142,11 +117,6 @@ namespace CookieApp.UI.ViewModels
                 _dateReceived = value;
                 OnPropertyChanged();
             }
-        }
-
-        private void OnCancel()
-        {
-            DialogResult = false;
         }
     }
 }

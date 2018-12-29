@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
+             xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
              mc:Ignorable="d" 
+             md:DialogServiceViews.IsRegistered="True"
              d:DataContext="{d:DesignInstance Type={x:Type viewModels:GirlScoutInventoryViewModel}}">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,10 +21,14 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Balance, StringFormat=Balance: -{0:C}}"
-                       Foreground="Red"/>
+            <StackPanel>
+                <TextBlock Text="{Binding Value, StringFormat=Value: {0:C}}"/>
+                <TextBlock Text="{Binding Balance, StringFormat=Balance: {0:C}}" />
+                <TextBlock Text="{Binding Variance, StringFormat=Variance {0:C}}"/>
+            </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" >
-                <Button Content="Make Payment" Padding="5" />
+                <Button Content="Make Payment" Padding="5"
+                        Command="{Binding MakePaymentCommand}"/>
             </StackPanel>
         </Grid>
         <ItemsControl Grid.Row="2" ItemsSource="{Binding CookieSlots}"

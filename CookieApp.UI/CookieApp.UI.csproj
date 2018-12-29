@@ -113,6 +113,8 @@
     <Compile Include="ViewModels\Dialogs\AddGirlScoutDialogViewModel.cs" />
     <Compile Include="ViewModels\CookieSlotViewModel.cs" />
     <Compile Include="ViewModels\CookieVariety.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogViewModelBase.cs" />
+    <Compile Include="ViewModels\Dialogs\MakePaymentDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\TransferCookiesFromGirlScoutDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\TransferCookiesToGirlScoutDialogViewModel.cs" />
     <Compile Include="ViewModels\GirlScoutInventoryViewModel.cs" />
@@ -127,6 +129,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\AddCookiesFromCupboardDialog.xaml.cs">
       <DependentUpon>AddCookiesFromCupboardDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\MakePaymentDialog.xaml.cs">
+      <DependentUpon>MakePaymentDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\TransferCookiesFromGirlScoutDialog.xaml.cs">
       <DependentUpon>TransferCookiesFromGirlScoutDialog.xaml</DependentUpon>
@@ -152,6 +157,10 @@
     <Page Include="Views\Dialogs\AddCookiesFromCupboardDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\MakePaymentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\TransferCookiesFromGirlScoutDialog.xaml">
       <SubType>Designer</SubType>

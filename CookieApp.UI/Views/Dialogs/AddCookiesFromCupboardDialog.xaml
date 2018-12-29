@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
         mc:Ignorable="d"
         Window.SizeToContent="WidthAndHeight"
-        Title="AddCookiesFromCupboardDialog"
+        Title="Add Cookies From Cupboard"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddCookiesFromCupboardDialogViewModel}}">
     <Grid Margin="5">
         <Grid.RowDefinitions>

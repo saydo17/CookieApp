@@ -4,42 +4,13 @@ using MvvmDialogs;
 
 namespace CookieApp.UI.ViewModels
 {
-    public class AddGirlScoutDialogViewModel : ViewModelBase, IModalDialogViewModel
+    public class AddGirlScoutDialogViewModel : DialogViewModelBase
     {
-        private bool? _dialogResult;
         private string _firstName;
         private string _lastName;
         private string _parentFirstName;
         private string _parentLastName;
         private string _phoneNumber;
-        private ICommand _saveCommand;
-        private ICommand _cancelCommand;
-
-        public ICommand SaveCommand => _saveCommand ?? (_saveCommand = new RelayCommand(OnSave));
-
-        private void OnSave()
-        {
-            DialogResult = true;
-        }
-
-        public ICommand CancelCommand => _cancelCommand ?? (_cancelCommand = new RelayCommand(OnCancel));
-
-        private void OnCancel()
-        {
-
-            DialogResult = false;
-        }
-
-        public bool? DialogResult
-        {
-            get { return _dialogResult; }
-            private set
-            {
-                if (value == _dialogResult) return;
-                _dialogResult = value;
-                OnPropertyChanged();
-            }
-        }
 
         public string FirstName
         {
