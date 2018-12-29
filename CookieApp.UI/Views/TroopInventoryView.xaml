@@ -10,28 +10,6 @@
              md:DialogServiceViews.IsRegistered="True"
              d:DataContext="{d:DesignInstance Type={x:Type viewModels:TroopInventoryViewModel}}">
     <Grid>
-        <Grid.Resources>
-            <DataTemplate x:Key="CookieSlotTemplate" DataType="{x:Type viewModels:CookieSlotViewModel}">
-                <Grid Background="Gray" Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="5">
-                        <Label Content="{Binding Variety}" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="5">
-                        <Label Content="Price: " HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Margin="5">
-                        <Label Content="Quantity: " HorizontalAlignment="Center" />
-                        <TextBlock Text="{Binding Quantity}" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Grid>
-            </DataTemplate>
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

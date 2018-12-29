@@ -19,6 +19,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
@@ -70,7 +71,11 @@
             <Label Content="ToffeeTastic"/>
             <TextBox Text="{Binding ToffeeTastic}"/>
         </StackPanel>
-        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="8" Orientation="Horizontal">
+            <Label Content="Date Received"/>
+            <DatePicker SelectedDate="{Binding DateReceived}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Save" Command="{Binding SaveCommand}"/>
             <Button Content="Cancel" Command="{Binding CancelCommand}"/>
         </StackPanel>

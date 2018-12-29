@@ -111,6 +111,7 @@
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\AddCookiesFromCupboardDialogViewModel.cs" />
     <Compile Include="ViewModels\AddGirlScoutDialogViewModel.cs" />
+    <Compile Include="ViewModels\CookieSlotViewModel.cs" />
     <Compile Include="ViewModels\CookieVariety.cs" />
     <Compile Include="ViewModels\GirlScoutCookieInventoryViewModel.cs" />
     <Compile Include="ViewModels\GirlScoutViewModel.cs" />

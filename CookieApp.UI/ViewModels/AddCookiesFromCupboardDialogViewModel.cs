@@ -20,6 +20,11 @@ namespace CookieApp.UI.ViewModels
         private ICommand _cancelCommand;
         private DateTime _dateReceived;
 
+        public AddCookiesFromCupboardDialogViewModel()
+        {
+            DateReceived = DateTime.Today;
+        }
+
         public int Smors
         {
             get { return _smors; }
