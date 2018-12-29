@@ -6,18 +6,22 @@ using MvvmDialogs;
 
 namespace CookieApp.UI.ViewModels
 {
-    public class GirlScoutCookieInventoryViewModel : ViewModelBase
+    public class GirlScoutInventoryViewModel : ViewModelBase
     {
         private readonly DialogService _dialogService;
         private readonly CookieAppApi _api;
         private ObservableCollection<CookieSlotViewModel> _cookieSlots;
         private decimal _balance;
+        private int _inventoryId;
+        private string _girlsName;
 
-        public GirlScoutCookieInventoryViewModel(InventoryDto inventory, DialogService dialogService, CookieAppApi api)
+        public GirlScoutInventoryViewModel(GirlScoutDto girlScout, DialogService dialogService, CookieAppApi api)
         {
             _dialogService = dialogService;
             _api = api;
-            UpdateInventory(inventory);
+            _inventoryId = girlScout.Inventory.Id;
+            GirlsName = girlScout.FirstName;
+            UpdateInventory(girlScout.Inventory);
         }
 
         private void UpdateInventory(InventoryDto inventory)
@@ -44,6 +48,17 @@ namespace CookieApp.UI.ViewModels
             {
                 if (value == _balance) return;
                 _balance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GirlsName
+        {
+            get { return _girlsName; }
+            set
+            {
+                if (value == _girlsName) return;
+                _girlsName = value;
                 OnPropertyChanged();
             }
         }

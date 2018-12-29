@@ -7,7 +7,7 @@
         private string _parentFirstName;
         private string _parentLastName;
         private string _phoneNumber;
-        private GirlScoutCookieInventoryViewModel _inventory;
+        private GirlScoutInventoryViewModel _inventory;
 
         public string FirstName
         {
@@ -72,7 +72,7 @@
             }
         }
 
-        public GirlScoutCookieInventoryViewModel Inventory
+        public GirlScoutInventoryViewModel Inventory
         {
             get { return _inventory; }
             set

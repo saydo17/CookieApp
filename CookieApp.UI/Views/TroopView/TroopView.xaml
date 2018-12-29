@@ -10,6 +10,9 @@
              md:DialogServiceViews.IsRegistered="True"
              d:DataContext="{d:DesignInstance Type={x:Type viewModels:TroopViewModel}}">
     <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:GirlScoutInventoryViewModel}">
+            <local:GirlScoutInventoryView />
+        </DataTemplate>
         <DataTemplate x:Key="GirlScoutListItemTemplate" DataType="{x:Type viewModels:GirlScoutViewModel}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -52,10 +55,12 @@
             <Button Grid.Row="1" Content="Add Girl Scout" Command="{Binding AddGirlScoutCommand}" HorizontalAlignment="Right"
                     Margin="5" Padding="5"/>
             <ListBox Grid.Row="2" ItemsSource="{Binding GirlScouts}"
-                     ItemTemplate="{StaticResource GirlScoutListItemTemplate}"/>
+                     ItemTemplate="{StaticResource GirlScoutListItemTemplate}"
+                     SelectedItem="{Binding SelectedGirlScout}"/>
         </Grid>
         <StackPanel Grid.Column="1">
             <local:TroopInventoryView DataContext="{Binding Inventory}"/>
+            <ContentPresenter Content="{Binding SelectedGirlScout.Inventory}"/>
         </StackPanel>
     </Grid>
 </UserControl>

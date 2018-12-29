@@ -15,13 +15,15 @@ namespace CookieApp.UI.ViewModels
         private decimal _balance;
         private ICommand _addCookiesFromCupboardCommand;
         private readonly int _inventoryId;
+        private string _troopName;
 
-        public TroopInventoryViewModel(InventoryDto inventory, IDialogService dialogService, CookieAppApi api)
+        public TroopInventoryViewModel(TroopDto troop, IDialogService dialogService, CookieAppApi api)
         {
             _dialogService = dialogService;
             _api = api;
-            _inventoryId = inventory.Id;
-            UpdateInventory(inventory);
+            _inventoryId = troop.Inventory.Id;
+            TroopName = troop.Name;
+            UpdateInventory(troop.Inventory);
         }
 
         private void UpdateInventory(InventoryDto inventory)
@@ -46,6 +48,17 @@ namespace CookieApp.UI.ViewModels
         public ICommand AddCookiesFromCupboardCommand => _addCookiesFromCupboardCommand ??
                                                          (_addCookiesFromCupboardCommand =
                                                              new RelayCommand(AddCookiesFromCupboard));
+
+        public string TroopName
+        {
+            get { return _troopName; }
+            set
+            {
+                if (value == _troopName) return;
+                _troopName = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void AddCookiesFromCupboard()
         {

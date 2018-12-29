@@ -50,11 +50,23 @@ namespace CookieApp.UI.ViewModels
         public ICommand AddGirlScoutCommand =>
             _addGirlScoutCommand ?? (_addGirlScoutCommand = new RelayCommand(AddGirlScout));
 
+        public GirlScoutViewModel SelectedGirlScout
+        {
+            get { return _selectedGirlScout; }
+            set
+            {
+                if (Equals(value, _selectedGirlScout)) return;
+                _selectedGirlScout = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ICommand _addGirlScoutCommand;
         private readonly CookieAppApi _api;
         private readonly DialogService _dialogService;
         private int _troopId;
         private TroopInventoryViewModel _inventory;
+        private GirlScoutViewModel _selectedGirlScout;
 
         private void AddGirlScout()
         {
@@ -97,10 +109,11 @@ namespace CookieApp.UI.ViewModels
                 ParentFirstName = g.ParentFirstName,
                 ParentLastName = g.ParentLastName,
                 PhoneNumber = g.PhoneNumber,
-                Inventory = new GirlScoutCookieInventoryViewModel(g.Inventory, _dialogService, _api)
+                //TODO Factory for DI
+                Inventory = new GirlScoutInventoryViewModel(g, _dialogService, _api)
             }));
             //TODO Factory for DI
-            Inventory = new TroopInventoryViewModel(troop.Inventory, _dialogService, _api);
+            Inventory = new TroopInventoryViewModel(troop, _dialogService, _api);
         }
     }
 }
