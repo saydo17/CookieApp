@@ -85,13 +85,13 @@ namespace CookieApp.ApplicationServices
                             Quantity = c.Quantity,
                         }
                     ).ToList(),
-                    DateEntered = x.DateEntered,
-                    DateReceived = x.DateReceived
+                    DateEntered = x.DateEntered.ToLocalTime(),
+                    DateReceived = x.DateReceived.ToLocalTime()
                 })
                 .Case((CookieTransferInTransaction x) => ret = new CookieTransferInTransactionDto()
                 {
-                    DateEntered = x.DateEntered,
-                    DateReceived = x.DateReceived,
+                    DateEntered = x.DateEntered.ToLocalTime(),
+                    DateReceived = x.DateReceived.ToLocalTime(),
                     FromInventoryId = x.FromInventoryId,
                     Cookies = x.Cookies.Select(c =>
                         new CookieQuantityDto()
@@ -107,8 +107,8 @@ namespace CookieApp.ApplicationServices
                 })
                 .Case((CookieTransferOutTransaction x) => ret = new CookieTransferOutTransactionDto()
                 {
-                    DateEntered = x.DateEntered,
-                    DateReceived = x.DateReceived,
+                    DateEntered = x.DateEntered.ToLocalTime(),
+                    DateReceived = x.DateReceived.ToLocalTime(),
                     ToInventoryId = x.ToInventoryId,
                     Cookies = x.Cookies.Select(c =>
                         new CookieQuantityDto()
@@ -124,8 +124,8 @@ namespace CookieApp.ApplicationServices
                 })
                 .Case((PaymentTransaction x) => ret = new PaymentTransactionDto()
                 {
-                    DateEntered = x.DateEntered,
-                    DateReceived = x.DateReceived,
+                    DateEntered = x.DateEntered.ToLocalTime(),
+                    DateReceived = x.DateReceived.ToLocalTime(),
                     Amount = x.Amount,
                 })
                 .Case((UpdateCookiesTransaction x) => ret = new UpdateCookiesTransactionDto()

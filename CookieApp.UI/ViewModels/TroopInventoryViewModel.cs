@@ -56,7 +56,7 @@ namespace CookieApp.UI.ViewModels
 
             var dto = new AddCookiesFromCupboardDto()
             {
-                DateReceived = viewModel.DateReceived.ToUniversalTime(),
+                DateReceived = viewModel.DateReceived,
                 DoSiSos = viewModel.DoSiSos,
                 Savannah = viewModel.Savannah,
                 Samoas = viewModel.Samoas,

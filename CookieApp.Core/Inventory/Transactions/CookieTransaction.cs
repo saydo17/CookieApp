@@ -8,7 +8,7 @@ namespace CookieApp.Core.Inventory
         public CookieTransaction( DateTime dateReceived) : this()
         {
             DateEntered = DateTime.UtcNow;
-            DateReceived = dateReceived;
+            DateReceived = dateReceived.ToUniversalTime();
         }
 
         public virtual DateTime DateEntered { get; }
