@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
         Title="Make Payment"
+        WindowStartupLocation="CenterOwner"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:MakePaymentDialogViewModel}}">
     <Grid Margin="5">
         <Grid.RowDefinitions>

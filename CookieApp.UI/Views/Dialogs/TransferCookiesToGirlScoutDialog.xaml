@@ -6,6 +6,7 @@
         xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
         mc:Ignorable="d"
         SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
         Title="Transfer Cookies To GirlScout"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:TransferCookiesToGirlScoutDialogViewModel}}">
     <Grid Margin="5">

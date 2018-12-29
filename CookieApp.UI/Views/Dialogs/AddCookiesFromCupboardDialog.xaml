@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Window.SizeToContent="WidthAndHeight"
         Title="Add Cookies From Cupboard"
+        WindowStartupLocation="CenterOwner"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddCookiesFromCupboardDialogViewModel}}">
     <Grid Margin="5">
         <Grid.RowDefinitions>

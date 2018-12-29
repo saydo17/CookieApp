@@ -56,7 +56,14 @@ namespace CookieApp.UI.ViewModels
                         return false;
 
             }
-            return true;
+            return Smors > 0 &&
+                ThinMints > 0 &&
+                Samoas > 0 &&
+                Tagalongs > 0 &&
+                Trefoils > 0 &&
+                DoSiSos > 0 &&
+                Savannah > 0 &&
+                ToffeeTastic > 0;
         }
 
         public int Smors

@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Add GirlScout" 
         SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddGirlScoutDialogViewModel}}"
         >
     <StackPanel Margin="5">

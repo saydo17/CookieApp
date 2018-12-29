@@ -20,6 +20,19 @@ namespace CookieApp.UI.ViewModels
             DateReceived = DateTime.Today;
         }
 
+        protected override bool CanSave()
+        {
+            //TODO make this part of the validation
+            return Smors > 0 &&
+                   ThinMints > 0 &&
+                   Samoas > 0 && 
+                   Tagalongs > 0 &&
+                   Trefoils > 0 &&
+                   DoSiSos > 0 &&
+                   Savannah > 0 &&
+                   ToffeeTastic > 0;
+        }
+
         public int Smors
         {
             get { return _smors; }

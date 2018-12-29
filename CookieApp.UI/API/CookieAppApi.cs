@@ -23,11 +23,11 @@ namespace CookieApp.UI.API
 
         private IUnitOfWork UnitOfWork => new UnitOfWork(_sessionFactory);
 
+        //TODO refactor to take view model and id
         public void AddCookiesFromCupboard(AddCookiesFromCupboardDto data)
         {
             using (var uow = UnitOfWork)
             {
-                //TODO convert dto
                 IEnumerable<CookieQuantity> cookies = new[]
                 {
                     new CookieQuantity(data.DoSiSos, Cookie.DosiSo),
@@ -61,6 +61,7 @@ namespace CookieApp.UI.API
             
         }
 
+        //TODO refactor to take viewmodel
         public void AddGirlScoutToTroop(NewGirlScoutDto girlScout, int troopId)
         {
             using (var uow = UnitOfWork)
@@ -72,6 +73,7 @@ namespace CookieApp.UI.API
             }
         }
 
+        //TODO refactor to return viewmodel, need di for this
         public InventoryDto GetTroopInventoryById(int id)
         {
             using (var uow = UnitOfWork)
@@ -82,6 +84,7 @@ namespace CookieApp.UI.API
             }
         }
 
+        //TODO refactor to return viewmodel, need di for this
         public InventoryDto GetGirlScoutInventoryById(int id)
         {
             using (var uow = UnitOfWork)
@@ -92,11 +95,11 @@ namespace CookieApp.UI.API
             }
         }
 
+        //TODO refactor to take viewmodel and ids
         public void TransferCookiesFromTroopToGirlScout(TransferCookiesToGirlScoutDto data)
         {
             using (var uow = UnitOfWork)
             {
-                //TODO convert dto
                 IEnumerable<CookieQuantity> cookies = new[]
                 {
                     new CookieQuantity(data.DoSiSos, Cookie.DosiSo),
@@ -113,17 +116,17 @@ namespace CookieApp.UI.API
                 int girlScoutInventoryId = data.GirlScoutInventoryId;
 
 
-                var command = new TransferCookiesCommand(troopInventoryId, girlScoutInventoryId,cookies, dateReceived);
+                var command = new TransferCookiesCommand(troopInventoryId, girlScoutInventoryId, cookies, dateReceived);
                 var handler = new TransferCookiesCommandHandler(uow);
                 var result = handler.Handle(command);
             }
         }
 
+        //TODO refactor to take viewmodel and ids
         public void TransferCookiesFromGirlScoutToTroop(TransferCookiesFromGirlScoutDto data)
         {
             using (var uow = UnitOfWork)
             {
-                //TODO convert dto
                 IEnumerable<CookieQuantity> cookies = new[]
                 {
                     new CookieQuantity(data.DoSiSos, Cookie.DosiSo),
@@ -146,6 +149,7 @@ namespace CookieApp.UI.API
             }
         }
 
+        //TODO refactor to take viewmodel and ids
         public void MakePayment(MakePaymentDto makePaymentDto)
         {
             using (var uow = UnitOfWork)
