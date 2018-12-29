@@ -87,6 +87,7 @@
     <Compile Include="AppServices\Commands\MakePaymentCommand.cs" />
     <Compile Include="AppServices\Commands\TransferCookiesCommand.cs" />
     <Compile Include="AppServices\Commands\UpdateCookiesCommand.cs" />
+    <Compile Include="AppServices\Queries\GetGirlScoutInventoryQuery.cs" />
     <Compile Include="AppServices\Queries\GetTroopInventoryQuery.cs" />
     <Compile Include="AppServices\Queries\GetTroopQuery.cs" />
     <Compile Include="IQuery.cs" />

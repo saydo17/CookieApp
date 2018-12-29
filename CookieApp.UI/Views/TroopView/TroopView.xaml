@@ -60,6 +60,18 @@
         </Grid>
         <StackPanel Grid.Column="1">
             <local:TroopInventoryView DataContext="{Binding Inventory}"/>
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Transfer To GirlScout" 
+                        Padding="5" HorizontalAlignment="Left" Width="150"
+                        Command="{Binding TransferCookiesToGirlScoutCommand}"/>
+                <Button Grid.Column="1" Content="Transfer From GirlScout" 
+                        Padding="5" HorizontalAlignment="Right" Width="150"
+                        Command="{Binding TransferCookiesFromGirlScoutCommand}"/>
+            </Grid>
             <ContentPresenter Content="{Binding SelectedGirlScout.Inventory}"/>
         </StackPanel>
     </Grid>

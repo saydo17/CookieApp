@@ -14,19 +14,19 @@ namespace CookieApp.UI.ViewModels
         private readonly CookieAppApi _api;
         private decimal _balance;
         private ICommand _addCookiesFromCupboardCommand;
-        private readonly int _inventoryId;
         private string _troopName;
+        private ObservableCollection<CookieSlotViewModel> _cookieSlots;
 
         public TroopInventoryViewModel(TroopDto troop, IDialogService dialogService, CookieAppApi api)
         {
             _dialogService = dialogService;
             _api = api;
-            _inventoryId = troop.Inventory.Id;
+            Id = troop.Inventory.Id;
             TroopName = troop.Name;
             UpdateInventory(troop.Inventory);
         }
 
-        private void UpdateInventory(InventoryDto inventory)
+        public void UpdateInventory(InventoryDto inventory)
         {
             Balance = inventory.Balance;
             CookieSlots = new ObservableCollection<CookieSlotViewModel>(inventory.CookieSlots.Select(s => new CookieSlotViewModel(s)));
@@ -43,11 +43,16 @@ namespace CookieApp.UI.ViewModels
             }
         }
 
-        public ObservableCollection<CookieSlotViewModel> CookieSlots { get; set; }
-
-        public ICommand AddCookiesFromCupboardCommand => _addCookiesFromCupboardCommand ??
-                                                         (_addCookiesFromCupboardCommand =
-                                                             new RelayCommand(AddCookiesFromCupboard));
+        public ObservableCollection<CookieSlotViewModel> CookieSlots
+        {
+            get { return _cookieSlots; }
+            set
+            {
+                if (Equals(value, _cookieSlots)) return;
+                _cookieSlots = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string TroopName
         {
@@ -59,6 +64,12 @@ namespace CookieApp.UI.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public ICommand AddCookiesFromCupboardCommand => _addCookiesFromCupboardCommand ??
+                                                         (_addCookiesFromCupboardCommand =
+                                                             new RelayCommand(AddCookiesFromCupboard));
+
+        public int Id { get; }
 
         private void AddCookiesFromCupboard()
         {
@@ -78,12 +89,14 @@ namespace CookieApp.UI.ViewModels
                 ThinMints = viewModel.ThinMints,
                 ToffeeTastic = viewModel.ToffeeTastic,
                 Trefoils = viewModel.Trefoils,
-                TroopInventoryId = _inventoryId
+                TroopInventoryId = Id
             };
             _api.AddCookiesFromCupboard(dto);
-            var inventory = _api.GetTroopInventoryById(_inventoryId);
+            var inventory = _api.GetTroopInventoryById(Id);
             UpdateInventory(inventory);
 
         }
+
+
     }
 }

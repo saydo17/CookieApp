@@ -81,5 +81,69 @@ namespace CookieApp.UI.API
                 return handler.Handle(command);
             }
         }
+
+        public InventoryDto GetGirlScoutInventoryById(int id)
+        {
+            using (var uow = UnitOfWork)
+            {
+                var command = new GetGirlScoutInventoryQuery(id);
+                var handler = new GetGirlScoutInventoryQueryHandler(uow);
+                return handler.Handle(command);
+            }
+        }
+
+        public void TransferCookiesFromTroopToGirlScout(TransferCookiesToGirlScoutDto data)
+        {
+            using (var uow = UnitOfWork)
+            {
+                //TODO convert dto
+                IEnumerable<CookieQuantity> cookies = new[]
+                {
+                    new CookieQuantity(data.DoSiSos, Cookie.DosiSo),
+                    new CookieQuantity(data.Samoas, Cookie.Samoas),
+                    new CookieQuantity(data.Savannah, Cookie.Savannah),
+                    new CookieQuantity(data.Smors, Cookie.Smors),
+                    new CookieQuantity(data.Tagalongs, Cookie.Tagalongs),
+                    new CookieQuantity(data.ThinMints, Cookie.ThinMints),
+                    new CookieQuantity(data.ToffeeTastic, Cookie.ToffeeTastic),
+                    new CookieQuantity(data.Trefoils, Cookie.Trefoils),
+                };
+                DateTime dateReceived = data.DateReceived;
+                int troopInventoryId = data.TroopInventoryId;
+                int girlScoutInventoryId = data.GirlScoutInventoryId;
+
+
+                var command = new TransferCookiesCommand(troopInventoryId, girlScoutInventoryId,cookies, dateReceived);
+                var handler = new TransferCookiesCommandHandler(uow);
+                var result = handler.Handle(command);
+            }
+        }
+
+        public void TransferCookiesFromGirlScoutToTroop(TransferCookiesFromGirlScoutDto data)
+        {
+            using (var uow = UnitOfWork)
+            {
+                //TODO convert dto
+                IEnumerable<CookieQuantity> cookies = new[]
+                {
+                    new CookieQuantity(data.DoSiSos, Cookie.DosiSo),
+                    new CookieQuantity(data.Samoas, Cookie.Samoas),
+                    new CookieQuantity(data.Savannah, Cookie.Savannah),
+                    new CookieQuantity(data.Smors, Cookie.Smors),
+                    new CookieQuantity(data.Tagalongs, Cookie.Tagalongs),
+                    new CookieQuantity(data.ThinMints, Cookie.ThinMints),
+                    new CookieQuantity(data.ToffeeTastic, Cookie.ToffeeTastic),
+                    new CookieQuantity(data.Trefoils, Cookie.Trefoils),
+                };
+                DateTime dateReceived = data.DateReceived;
+                int troopInventoryId = data.TroopInventoryId;
+                int girlScoutInventoryId = data.GirlScoutInventoryId;
+
+
+                var command = new TransferCookiesCommand(girlScoutInventoryId, troopInventoryId, cookies, dateReceived);
+                var handler = new TransferCookiesCommandHandler(uow);
+                var result = handler.Handle(command);
+            }
+        }
     }
 }

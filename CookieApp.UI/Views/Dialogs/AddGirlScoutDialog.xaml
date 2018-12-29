@@ -6,24 +6,53 @@
         xmlns:local="clr-namespace:CookieApp.UI.Views"
         xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
         mc:Ignorable="d"
-        Title="AddGirlScoutDialog" Height="300" Width="300"
+        Title="Add GirlScout" 
+        SizeToContent="WidthAndHeight"
         d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddGirlScoutDialogViewModel}}"
         >
-    <StackPanel>
-        <TextBlock Text="First Name:"/>
-        <TextBox Text="{Binding FirstName}"/>
-        
-        <TextBlock Text="Last Name:"/>
-        <TextBox Text="{Binding LastName}"/>
+    <StackPanel Margin="5">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Width" Value="50" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="5" />
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="Width" Value="300" />
+                <Setter Property="Padding" Value="2" />
+            </Style>
+            <Style TargetType="{x:Type StackPanel}">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+        </StackPanel.Resources>
+        <StackPanel>
+            <TextBlock Text="First Name:" />
+            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
 
-        <TextBlock Text="Parent First Name:"/>
-        <TextBox Text="{Binding ParentFirstName}"/>
+        <StackPanel>
+            <TextBlock Text="Last Name:" />
+            <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
 
-        <TextBlock Text="Parent Last Name:"/>
-        <TextBox Text="{Binding ParentLastName}"/>
+        <StackPanel>
+            <TextBlock Text="Parent First Name:" />
+            <TextBox Text="{Binding ParentFirstName, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
 
-        <TextBlock Text="Phone Number:"/>
-        <TextBox Text="{Binding PhoneNumber}"/>
+        <StackPanel>
+            <TextBlock Text="Parent Last Name:" />
+            <TextBox Text="{Binding ParentLastName, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Text="Phone Number:" />
+            <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Save" Command="{Binding SaveCommand}"/>

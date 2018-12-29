@@ -109,10 +109,12 @@
     </ApplicationDefinition>
     <Compile Include="API\CookieAppApi.cs" />
     <Compile Include="Properties\Annotations1.cs" />
-    <Compile Include="ViewModels\AddCookiesFromCupboardDialogViewModel.cs" />
-    <Compile Include="ViewModels\AddGirlScoutDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AddCookiesFromCupboardDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AddGirlScoutDialogViewModel.cs" />
     <Compile Include="ViewModels\CookieSlotViewModel.cs" />
     <Compile Include="ViewModels\CookieVariety.cs" />
+    <Compile Include="ViewModels\Dialogs\TransferCookiesFromGirlScoutDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\TransferCookiesToGirlScoutDialogViewModel.cs" />
     <Compile Include="ViewModels\GirlScoutInventoryViewModel.cs" />
     <Compile Include="ViewModels\GirlScoutViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="Views\Dialogs\AddCookiesFromCupboardDialog.xaml.cs">
       <DependentUpon>AddCookiesFromCupboardDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\TransferCookiesFromGirlScoutDialog.xaml.cs">
+      <DependentUpon>TransferCookiesFromGirlScoutDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\TransferCookiesToGirlScoutDialog.xaml.cs">
+      <DependentUpon>TransferCookiesToGirlScoutDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\AddGirlScoutDialog.xaml.cs">
       <DependentUpon>AddGirlScoutDialog.xaml</DependentUpon>
@@ -142,6 +150,14 @@
       <DependentUpon>TroopView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Dialogs\AddCookiesFromCupboardDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\TransferCookiesFromGirlScoutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\TransferCookiesToGirlScoutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

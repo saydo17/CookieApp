@@ -1,13 +1,13 @@
-﻿<Window x:Class="CookieApp.UI.Views.AddCookiesFromCupboardDialog"
+﻿<Window x:Class="CookieApp.UI.Views.TransferCookiesToGirlScoutDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:CookieApp.UI.ViewModels"
         mc:Ignorable="d"
-        Window.SizeToContent="WidthAndHeight"
-        Title="AddCookiesFromCupboardDialog"
-        d:DataContext="{d:DesignInstance Type={x:Type viewModels:AddCookiesFromCupboardDialogViewModel}}">
+        SizeToContent="WidthAndHeight"
+        Title="Transfer Cookies To GirlScout"
+        d:DataContext="{d:DesignInstance Type={x:Type viewModels:TransferCookiesToGirlScoutDialogViewModel}}">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

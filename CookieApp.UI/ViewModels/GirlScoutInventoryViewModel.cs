@@ -12,23 +12,24 @@ namespace CookieApp.UI.ViewModels
         private readonly CookieAppApi _api;
         private ObservableCollection<CookieSlotViewModel> _cookieSlots;
         private decimal _balance;
-        private int _inventoryId;
         private string _girlsName;
 
         public GirlScoutInventoryViewModel(GirlScoutDto girlScout, DialogService dialogService, CookieAppApi api)
         {
             _dialogService = dialogService;
             _api = api;
-            _inventoryId = girlScout.Inventory.Id;
+            Id = girlScout.Inventory.Id;
             GirlsName = girlScout.FirstName;
             UpdateInventory(girlScout.Inventory);
         }
 
-        private void UpdateInventory(InventoryDto inventory)
+        public void UpdateInventory(InventoryDto inventory)
         {
             Balance = inventory.Balance;
             CookieSlots = new ObservableCollection<CookieSlotViewModel>(inventory.CookieSlots.Select(s => new CookieSlotViewModel(s)));
         }
+
+        public int Id { get; }
 
         public ObservableCollection<CookieSlotViewModel> CookieSlots
         {

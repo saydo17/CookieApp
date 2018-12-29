@@ -42,10 +42,7 @@ namespace CookieApp.SqlLiteDatabase.Mappings
 
             if (val != null && !string.IsNullOrWhiteSpace(val))
             {
-                ITraceWriter traceWriter = new MemoryTraceWriter();
-                var obj = JsonConvert.DeserializeObject<T>(val, new JsonSerializerSettings() {TraceWriter = traceWriter});
-                Console.WriteLine(traceWriter);
-                return obj;
+                return JsonConvert.DeserializeObject<T>(val);
             }
 
             return null;
